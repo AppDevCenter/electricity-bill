@@ -39,9 +39,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func testMe(sender: AnyObject) {
-    }
-
     @IBAction func countTotalPrice(sender: AnyObject) {
 
             let totalSumCounted = NSDecimalNumber(string: kwhUsed.text) * NSDecimalNumber( string: priceForOneKwh.text)
