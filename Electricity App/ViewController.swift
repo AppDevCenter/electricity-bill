@@ -8,11 +8,30 @@
 
 import UIKit
 
+
+//global func
+func *(left: NSDecimalNumber, right: NSDecimalNumber) -> NSDecimalNumber{
+    return left.decimalNumberByMultiplyingBy(right);
+}
+
 class ViewController: UIViewController {
+
+    
+    @IBOutlet weak var kwhUsed: UITextField!
+    @IBOutlet weak var priceForOneKwh: UITextField!
+    @IBOutlet weak var totalSum: UILabel!
+    
+    
+    let defaultPrice = NSDecimalNumber( string: "0.1515")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //initial value
+        priceForOneKwh.text = defaultPrice.stringValue
+        kwhUsed.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +39,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func testMe(sender: AnyObject) {
+    }
 
+    @IBAction func countTotalPrice(sender: AnyObject) {
+
+            let totalSumCounted = NSDecimalNumber(string: kwhUsed.text) * NSDecimalNumber( string: priceForOneKwh.text)
+            totalSum.text = NSNumberFormatter.localizedStringFromNumber(totalSumCounted, numberStyle: NSNumberFormatterStyle.CurrencyStyle);
+        
+    }
 }
 
